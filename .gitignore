@@ -1,0 +1,29 @@
+# Node
+node_modules/
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+server/.env
+client/.env
+
+# Build outputs
+/dist/
+/build/
+client/dist/
+server/dist/
+coverage/
+
+# Framework specifics
+.next/
+.turbo/
+
+# IDE/editor
+.vscode/
+.DS_Store
