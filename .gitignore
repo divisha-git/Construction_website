@@ -27,3 +27,5 @@ coverage/
 # IDE/editor
 .vscode/
 .DS_Store
+
+/generated/prisma

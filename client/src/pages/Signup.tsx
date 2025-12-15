@@ -9,6 +9,7 @@ const schema = z.object({
   name: z.string().min(2).optional(),
   email: z.string().email(),
   password: z.string().min(6),
+  role: z.enum(['ENGINEER', 'OWNER']).default('ENGINEER'),
 })
 
 type FormData = z.infer<typeof schema>
@@ -54,6 +55,16 @@ export default function Signup() {
             <input type="password" className="mt-1 w-full h-11 px-3 rounded-md bg-slate-800 text-white placeholder-slate-400 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
               placeholder="••••••••" {...register('password')} />
             {errors.password && <p className="text-xs text-red-400 mt-1">{errors.password.message}</p>}
+          </div>
+          <div>
+            <label className="text-sm text-slate-300">Role</label>
+            <select className="mt-1 w-full h-11 px-3 rounded-md bg-slate-800 text-white border border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              {...register('role')}
+            >
+              <option value="ENGINEER">Engineer</option>
+              <option value="OWNER">Owner</option>
+            </select>
+            {errors.role && <p className="text-xs text-red-400 mt-1">{errors.role.message as any}</p>}
           </div>
           <button disabled={isSubmitting} className="inline-flex items-center justify-center h-11 w-full rounded-md bg-indigo-600 hover:bg-indigo-500 text-white font-medium shadow focus:outline-none focus:ring-2 focus:ring-indigo-400 disabled:opacity-60">
             {isSubmitting ? 'Creating...' : 'Create account'}
